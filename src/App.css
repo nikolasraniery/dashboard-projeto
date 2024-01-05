@@ -10,12 +10,37 @@
 }
 
 .work {
-  display: flex;
-  align-items: flex-end;
-  justify-content: end;
-  position: relative;
-  border-radius: 12px 12px 0 0;
-  z-index: -1;
-  margin-bottom: -26px;
+  height: 70px;
+  overflow: hidden;
   background: rgb(255, 140, 102);
+}
+
+.play {
+  height: 70px;
+  overflow: hidden;
+  background: rgb(86, 194, 230);
+}
+
+.study {
+  height: 70px;
+  overflow: hidden;
+  background: rgb(255, 92, 124);
+}
+
+.exercise {
+  height: 70px;
+  overflow: hidden;
+  background: rgb(74, 207, 129);
+}
+
+.social {
+  height: 70px;
+  overflow: hidden;
+  background: rgb(117, 54, 211);
+}
+
+.selfcare {
+  height: 70px;
+  overflow: hidden;
+  background: rgb(241, 198, 91);
 }

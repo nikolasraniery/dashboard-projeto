@@ -1,0 +1,7 @@
+work: 79px
+
+play: 77px
+
+study: 79px
+
+exercise: 55px

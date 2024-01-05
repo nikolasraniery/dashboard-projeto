@@ -9,7 +9,7 @@
     justify-content: end;
     position: relative;
     border-radius: 12px 12px 0 0;
-    /* z-index: -1; */
+    z-index: -1;
     margin-bottom: -26px;
 }
 
@@ -36,12 +36,13 @@
 }
 
 .card-content-left strong {
+    font-size: 18px;
     font-weight: 500;
 }
 
 .card-content-left span {
     font-weight: 300;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 /* RIGHT CONTENT CARD */

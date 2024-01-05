@@ -1,13 +1,13 @@
 import './App.css'
 
-import Exercise from './assets/icon-exercise.svg'
-import Play from './assets/icon-play.svg'
-import Selfcare from './assets/icon-self-care.svg'
-import Social from './assets/icon-social.svg'
-import Study from './assets/icon-study.svg'
 
 import { Card } from './components/Card/Card'
 import { Work } from './components/Icons/Work'
+import { Play } from './components/Icons/Play'
+import { Study } from './components/Icons/Study'
+import { Exercise } from './components/Icons/Exercise'
+import { Social } from './components/Icons/Social'
+import { Selfcare } from './components/Icons/Selfcare'
 import { Profile } from './components/Profile/Profile'
 
 export function App() {
@@ -26,31 +26,27 @@ export function App() {
       <Card
         title='Play'
         hours={10}
-        background={Play}
+        background={<Play />}
       />
       <Card
         title='Study'
         hours={4}
-        background={Study}
-        className='study'
+        background={<Study />}
       />
       <Card
         title='Exercise'
         hours={4}
-        background={Exercise}
-        className='exercise'
+        background={<Exercise />}
       />
       <Card
         title='Social'
         hours={5}
-        background={Social}
-        className='social'
+        background={<Social/>}
       />
       <Card
-        title='Self Care'
+        title='Selfcare'
         hours={2}
-        background={Selfcare}
-        className='selfcare'
+        background={<Selfcare />}
       />
     </div>
   )
