@@ -1,8 +1,7 @@
-:root {
+#root {
+  box-sizing: border-box;
   line-height: 1.5;
   font-weight: 400;
-  width: 100vw;
-  height: 100vh;
 
   color: rgba(255, 255, 255, 0.87);
 }

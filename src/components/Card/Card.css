@@ -1,6 +1,7 @@
 .card {
     border-radius: 8px;
     /* border: 1px solid red; */
+    height: 100%;
 }
 
 .background {
@@ -11,6 +12,7 @@
     border-radius: 12px 12px 0 0;
     z-index: -1;
     margin-bottom: -26px;
+    height: 35%;
 }
 
 .card-content {
@@ -23,6 +25,7 @@
     height: 100%;
     position: inherit;
     z-index: 2;
+    height: 60%;
 }
 
 /* LEFT CONTENT CARD */
@@ -70,4 +73,21 @@
     background: transparent;
     cursor: pointer;
     color: rgb(189, 193, 255);
+}
+
+@media all and (min-width: 780px) {
+    .card {
+        height: 110%;
+        width: 90%;
+        max-width: 190px;
+        margin: 8px;
+    }
+
+    .card-content {
+        height: 45%;
+    }
+
+    .background {
+        height: 30%;
+    }
 }

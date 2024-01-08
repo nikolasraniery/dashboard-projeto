@@ -7,6 +7,7 @@
     background: hsl(246, 80%, 60%);
     z-index: 10;
     position: relative;
+    height: 50%;
 }
 
 .profile-background img {
@@ -56,4 +57,21 @@
     font-family: 'Rubik', sans-serif;
     color: rgb(111, 118, 200);
     cursor: pointer;
+}
+
+@media all and (min-width: 780px) {
+    .profile-background-buttons {
+        margin-top: -8px;
+        height: 28%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .profile-background {
+        height: 48%;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 28px;
+    }
 }

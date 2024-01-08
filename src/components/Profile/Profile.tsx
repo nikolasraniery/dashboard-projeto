@@ -1,9 +1,14 @@
 import './Profile.css'
 import jeremu from '../../assets/image-jeremy.png'
+import { ComponentProps } from 'react'
 
-export function Profile() {
+interface ProfileProps extends ComponentProps<'div'>{}
+
+export function Profile({...props}: ProfileProps) {
     return (
-        <div>
+        <div 
+            {...props}
+        >
             <div className='profile-background'>
                 <div>
                     <img src={jeremu} alt="image jeremy" />
