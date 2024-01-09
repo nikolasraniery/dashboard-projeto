@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
 .card {
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
     /* border: 1px solid red; */
     height: 100%;
@@ -19,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     padding: 16px;
     border-radius: 8px;
     background: rgb(28, 31, 74);
@@ -32,14 +37,14 @@
 
 .card-content-left {
     display: flex;
-    flex-direction: column;
-    align-items: start;
+    align-items: center;
+    justify-content: space-between;
     height: 100%;
-    width: 50%;
+    width: 100%;
 }
 
 .card-content-left strong {
-    font-size: 18px;
+    font-size: 12px;
     font-weight: 500;
 }
 
@@ -48,15 +53,28 @@
     font-size: 26px;
 }
 
+.card-content-left button {
+    display: flex;
+    justify-content: start;
+    font-family: 'Rubik', sans-serif;
+    border: none;
+    font-size: 28px;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
 /* RIGHT CONTENT CARD */
 
 .card-content-right {
     display: flex;
-    gap: 8px;
+    align-items: start;
+    justify-content: space-between;
     flex-direction: column;
-    align-items: end;
-    justify-content: center;
+    font-family: 'Rubik', sans-serif;
     height: 100%;
+    width: 100%;
 }
 
 .card-content-right span {
@@ -64,16 +82,11 @@
     color: rgb(189, 193, 255);
 }
 
-.card-content-right button {
-    display: flex;
-    justify-content: start;
-    border: none;
-    font-size: 24px;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    color: rgb(189, 193, 255);
+.card-content-right strong {
+    font-size: 32px;
+    font-weight: 300;
 }
+
 
 @media all and (min-width: 780px) {
     .card {

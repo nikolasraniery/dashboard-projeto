@@ -78,9 +78,9 @@
   .item-1 {
     grid-column: 1;
     grid-row: 1 / span 2;
-
     width: 95%;
     height: 100%;
+    max-width: 160px;
   }
 
   .item-2 {

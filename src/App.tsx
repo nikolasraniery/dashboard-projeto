@@ -1,5 +1,6 @@
 import './App.css'
 
+import { useState, useEffect } from 'react'
 
 import { Card } from './components/Card/Card'
 import { Work } from './components/Icons/Work'
@@ -10,52 +11,56 @@ import { Social } from './components/Icons/Social'
 import { Selfcare } from './components/Icons/Selfcare'
 import { Profile } from './components/Profile/Profile'
 
-export function App() {
-  
+const url = "http://localhost:3000/dashboard"
 
-  return (
+export function App() {
+
+  const [dashboardData, setDashboardData] = useState([])
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(url);
+
+      const data = await res.json()
+
+      setDashboardData(data)
+    }
+
+    getData()
+  }, [])
+
+  const iconComponents = {
+    Work: Work,
+    Play: Play,
+    Study: Study,
+    Exercise: Exercise,
+    Social: Social,
+    Selfcare: Selfcare,
+  }
+
+
+  console.log(dashboardData)
+
+   return (
     <div className='geral-content grid'>
       
-      <Profile
-        className='item-1'
-      />
+      <Profile className='item-1' />
+      
+      {dashboardData.map((item, index) => {
+        const IconComponent = iconComponents[item.title];
+        const formattedTitle = item.title.toLowerCase();
 
-      <Card
-        title='Work'
-        hours={32}
-        background={<Work />}
-        className='item-2'
-      />
-      <Card
-        title='Play'
-        hours={10}
-        background={<Play />}
-        className='item-3'
-      />
-      <Card
-        title='Study'
-        hours={4}
-        background={<Study />}
-        className='item-4'
-      />
-      <Card
-        title='Exercise'
-        hours={4}
-        background={<Exercise />}
-        className='item-5'
-      />
-      <Card
-        title='Social'
-        hours={5}
-        background={<Social/>}
-        className='item-6'
-      />
-      <Card
-        title='Selfcare'
-        hours={2}
-        background={<Selfcare />}
-        className='item-7'
-      />
+        return (
+          <Card
+            key={index}
+            title={item.title}
+            hoursCurrent={item.timeframes.daily.current}
+            hoursPrevious={item.timeframes.daily.previous}
+            background={<IconComponent />}
+            className={`item-${index + 2} ${formattedTitle}`}
+          />
+        );
+      })}
     </div>
   )
 }
