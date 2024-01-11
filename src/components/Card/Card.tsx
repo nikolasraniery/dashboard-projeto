@@ -1,17 +1,27 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { CardBackground } from '../CardBackground/CardBackground';
 import './Card.css'
+import { Timeframe } from '../../interfaces/Timeframe';
 
 interface CardProps extends React.SVGProps<SVGSVGElement> {
     title: string;
-    hoursCurrent: number;
-    hoursPrevious: number;
+    timeframes: Timeframe;
     background?: ReactNode;
     className?: string;
 }
 
+type TimeFramesTypes = keyof Timeframe
 
-export function Card({ id, title, hoursCurrent, hoursPrevious, background }: CardProps) {
+export function Card({ id, title, timeframes, background }: CardProps) {
+
+    const [selectedTimeframe, setSelectedTimeframe] = useState<TimeFramesTypes>('daily')
+    const [showDropdownMenu, setShowDropdownMenu] = useState(false)
+
+    function handleSelectedTimeframe(currentTimeframe: TimeFramesTypes) {
+        setSelectedTimeframe(currentTimeframe)
+        setShowDropdownMenu(false)
+    }
+
     return (
 
         <div key={id} className='card col'>
@@ -21,7 +31,9 @@ export function Card({ id, title, hoursCurrent, hoursPrevious, background }: Car
             <div className='card-content'>
                 <div className='card-content-left'>
                     <strong>{title}</strong>
-                    <button>
+                    <button
+                        onClick={() => setShowDropdownMenu(!showDropdownMenu)}
+                    >
                         <svg 
                                 width="21" 
                                 height="5" 
@@ -32,12 +44,39 @@ export function Card({ id, title, hoursCurrent, hoursPrevious, background }: Car
                                         fill-rule="evenodd"/>
                         </svg>
                     </button>
-                    
                 </div>
                 <div className='card-content-right'>
-                    <strong>{hoursCurrent ?? hoursPrevious}hrs</strong>
-                    <span>Last Week - {hoursCurrent ?? hoursPrevious}hrs</span>
+                    <strong>{timeframes[selectedTimeframe].current}hrs</strong>
+                    <span>Last {selectedTimeframe} - {timeframes[selectedTimeframe].previous}hrs</span>
                 </div>
+                {
+                    showDropdownMenu && (
+                    <ul className='dropdownMenu'>
+                        <li>
+                            <button
+                                onClick={() => handleSelectedTimeframe("daily")}
+                            >
+                                Daily
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={() => handleSelectedTimeframe("weekly")}
+                            >
+                                Weekly
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                onClick={() => handleSelectedTimeframe("monthly")}
+                            >
+                                Monthly
+                            </button>
+                        </li>
+
+                    </ul>
+                    )
+                }
             </div>
         </div>
         

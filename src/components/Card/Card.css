@@ -28,9 +28,10 @@
     border-radius: 8px;
     background: rgb(28, 31, 74);
     height: 100%;
-    position: inherit;
     z-index: 2;
     height: 60%;
+
+    position: relative;
 }
 
 /* LEFT CONTENT CARD */
@@ -87,6 +88,29 @@
     font-weight: 300;
 }
 
+.dropdownMenu {
+    display: block;
+    list-style: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 8px;
+    padding: 4px;
+    overflow: hidden;
+    background-color: aliceblue;
+
+}
+
+.dropdownMenu li {
+    padding: 4px 8px;
+}
+
+.dropdownMenu li button {
+    background-color: transparent;
+    margin: 0;
+    border: 0;
+    padding: 4px;
+}
 
 @media all and (min-width: 780px) {
     .card {

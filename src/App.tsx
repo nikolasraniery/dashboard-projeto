@@ -10,18 +10,36 @@ import { Exercise } from './components/Icons/Exercise'
 import { Social } from './components/Icons/Social'
 import { Selfcare } from './components/Icons/Selfcare'
 import { Profile } from './components/Profile/Profile'
+import { api } from './api/api'
+import { Timeframe } from './interfaces/Timeframe'
 
-const url = "http://localhost:3000/dashboard"
+
+interface DarshboardItems {
+  id: string;
+  title: string;
+  timeframes: Timeframe
+}
+
+type ICONS = {
+  [key: string]: () => JSX.Element;
+};
+
+const iconComponents: ICONS= {
+  Work,
+  Play,
+  Study,
+  Exercise,
+  Social,
+  Selfcare,
+}
 
 export function App() {
-
-  const [dashboardData, setDashboardData] = useState([])
+  const [dashboardData, setDashboardData] = useState<Array<DarshboardItems>>([])
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(url);
-
-      const data = await res.json()
+      const res = await api.get("/dashboard");
+      const { data } = res
 
       setDashboardData(data)
     }
@@ -29,34 +47,21 @@ export function App() {
     getData()
   }, [])
 
-  const iconComponents = {
-    Work: Work,
-    Play: Play,
-    Study: Study,
-    Exercise: Exercise,
-    Social: Social,
-    Selfcare: Selfcare,
-  }
-
-
-  console.log(dashboardData)
-
    return (
     <div className='geral-content grid'>
       
       <Profile className='item-1' />
       
       {dashboardData.map((item, index) => {
-        const IconComponent = iconComponents[item.title];
         const formattedTitle = item.title.toLowerCase();
+        const Icon = iconComponents[item.title]
 
         return (
           <Card
+            background={<Icon />}
             key={index}
             title={item.title}
-            hoursCurrent={item.timeframes.daily.current}
-            hoursPrevious={item.timeframes.daily.previous}
-            background={<IconComponent />}
+            timeframes={item.timeframes}
             className={`item-${index + 2} ${formattedTitle}`}
           />
         );
