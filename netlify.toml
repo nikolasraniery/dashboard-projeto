@@ -4,6 +4,6 @@ for = "/data.json"
     Access-Control-Allow-Origin = "*"
     Content-Type = "application/json"
 [[headers]]
-for = "/*.js"
+for = "/*"
   [headers.values]
-  Content-Type = "application/javascript"
+  Content-Type = "text/javascript"
