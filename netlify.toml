@@ -1,0 +1,4 @@
+[[headers]]
+for = "/data.json"
+    [headers.values]
+    Acess-Control-Allow-Origin = "*"
