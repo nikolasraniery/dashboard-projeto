@@ -12,6 +12,7 @@ import { Selfcare } from './components/Icons/Selfcare'
 import { Profile } from './components/Profile/Profile'
 import { api } from './api/api'
 import { Timeframe } from './interfaces/Timeframe'
+import { TimeframeProvider } from './context/SelectedTimeframeContext'
 
 
 interface DarshboardItems {
@@ -48,25 +49,28 @@ export function App() {
   }, [])
 
    return (
-    <div className='geral-content grid'>
-      
-      <Profile className='item-1' />
-      
-      {dashboardData.map((item, index) => {
-        const formattedTitle = item.title.toLowerCase();
-        const Icon = iconComponents[item.title]
 
-        return (
-          <Card
-            background={<Icon />}
-            key={index}
-            title={item.title}
-            timeframes={item.timeframes}
-            className={`item-${index + 2} ${formattedTitle}`}
-          />
-        );
-      })}
-    </div>
+    <TimeframeProvider>
+      <div className='geral-content grid'>
+        
+        <Profile className='item-1' />
+        
+        {dashboardData.map((item, index) => {
+          const formattedTitle = item.title.toLowerCase();
+          const Icon = iconComponents[item.title]
+
+          return (
+            <Card
+              background={<Icon />}
+              key={index}
+              title={item.title}
+              timeframes={item.timeframes}
+              className={`item-${index + 2} ${formattedTitle}`}
+            />
+          );
+        })}
+      </div>
+    </TimeframeProvider>
   )
 }
 

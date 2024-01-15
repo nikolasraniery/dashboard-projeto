@@ -1,7 +1,8 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { CardBackground } from '../CardBackground/CardBackground';
 import './Card.css'
 import { Timeframe } from '../../interfaces/Timeframe';
+import { useTimeFrameContext } from '../../context/SelectedTimeframeContext';
 
 interface CardProps extends React.SVGProps<SVGSVGElement> {
     title: string;
@@ -14,13 +15,18 @@ type TimeFramesTypes = keyof Timeframe
 
 export function Card({ id, title, timeframes, background }: CardProps) {
 
-    const [selectedTimeframe, setSelectedTimeframe] = useState<TimeFramesTypes>('daily')
+    const { globalTimeframeSelected } = useTimeFrameContext()
+    const [selectedTimeframe, setSelectedTimeframe] = useState<TimeFramesTypes>(globalTimeframeSelected)
     const [showDropdownMenu, setShowDropdownMenu] = useState(false)
 
     function handleSelectedTimeframe(currentTimeframe: TimeFramesTypes) {
         setSelectedTimeframe(currentTimeframe)
         setShowDropdownMenu(false)
     }
+
+    useEffect(() => {
+        setSelectedTimeframe(globalTimeframeSelected)
+    }, [globalTimeframeSelected])
 
     return (
 

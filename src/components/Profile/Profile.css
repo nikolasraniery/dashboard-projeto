@@ -57,6 +57,11 @@
     font-family: 'Rubik', sans-serif;
     color: rgb(111, 118, 200);
     cursor: pointer;
+    text-transform: capitalize;
+}
+
+.profile-background-buttons button.selected{
+    color: white;
 }
 
 @media all and (min-width: 780px) {
