@@ -39,7 +39,7 @@ export function App() {
 
   useEffect(() => {
     async function getData() {
-      const res = await api.get("/dashboard");
+      const res = await api.get("/data.json");
       const { data } = res
 
       setDashboardData(data)
