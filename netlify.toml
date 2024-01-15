@@ -3,3 +3,7 @@ for = "/data.json"
     [headers.values]
     Access-Control-Allow-Origin = "*"
     Content-Type = "application/json"
+[[headers]]
+for = "/*.js"
+  [headers.values]
+  Content-Type = "application/javascript"
